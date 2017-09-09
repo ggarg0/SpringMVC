@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" [
+<!ENTITY contextInclude SYSTEM "org/springframework/web/context/WEB-INF/contextInclude.xml">
+]>
+
+<beans>
+	<bean id="helloWorld" abstract="true">
+      <property name="message1" value="Hello World!"/>
+      <property name="message2" value="Hello Second World!"/>
+   </bean>
+
+   <bean id="helloIndia" class="com.gaurav.springs.HelloIndia" parent="helloWorld">
+      <property name="message1" value="Hello India!"/>
+      <property name="message3" value="Namaste India!"/>
+   </bean>
+   
+   <bean id="parenttriangle" class="com.gaurav.springs.Triangle" abstract="true">
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangle1" class="com.gaurav.springs.Triangle" parent="parenttriangle">
+		<property name="points">
+			<list>
+				<ref bean="pointTwo"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangle2" class="com.gaurav.springs.Triangle" parent="parenttriangle">
+		<property name="points">
+			<list merge="true">
+				<ref bean="pointOne"/>
+				<ref bean="pointTwo"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="zeroPoint" class="com.gaurav.springs.Point">
+		<property name="x" value="${pointA.pointX}"/>
+		<property name="y" value="${pointA.pointY}"/>
+	</bean> 
+	
+	<bean id="pointOne" class="com.gaurav.springs.Point">
+		<property name="x" value="10"/>
+		<property name="y" value="0"/>
+	</bean> 
+	
+	<bean id="pointTwo" class="com.gaurav.springs.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="10"/>
+	</bean> 
+	
+<bean class="com.gaurav.springs.InitHelloWorld" />
+<bean class="com.gaurav.springs.MyBeanFactoryPostProcessor" />
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+	<property name="locations" value="PointConfig.properties"/>
+</bean>
+
+</beans>
