@@ -3,9 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<spring:url value="/resources/css/bootstrap.min.css"
-	var="bootstrap.min.css" />
-<link href="${bootstrap.min.css}" rel="stylesheet" />
+
+<spring:url value="/resources/css/core.css" var="coreCss" />
+<spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss" />
+<link href="${bootstrapCss}" rel="stylesheet" />
+<link href="${coreCss}" rel="stylesheet" />
+
 <title>Home Appliances Shop</title>
 </head>
 <jsp:include page="productByCategoryHeader.jsp" />
@@ -35,17 +38,13 @@
 							<th>Product Price</th>
 							<th style="width: 30%">Product Description</th>
 							<th>Available Quantity</th>
-							<th>Order</th>
-
 						</tr>
 						<c:forEach items="${model.productList}" var="product">
 							<tr>
-						
-								<td>${product.productName}</td>
+								<td><a href="/ShopMartApplication/getProductDetailsByProductId/${product.productId}"> ${product.productName}</a></td>
 								<td>${product.productPrice}</td>
 								<td>${product.productDescription}</td>
-								<td>${product.avaliableQuantity}</td>
-								<td><button type="button" class="btn btn-success">Order</button></td>
+								<td>${product.availableQuantity}</td>
 							</tr>
 						</c:forEach>
 					</table>

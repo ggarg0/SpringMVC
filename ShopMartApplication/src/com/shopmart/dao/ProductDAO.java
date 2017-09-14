@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmart.entity.Product;
 
@@ -30,4 +31,11 @@ public class ProductDAO {
 		return this.sessionFactory.getCurrentSession().createQuery(" FROM PRODUCT WHERE CATEGORY_ID = " + categoryId)
 				.list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Product getProductDetailsByProductId(int productId) {
+		return (Product) this.sessionFactory.getCurrentSession().createQuery
+				(" FROM PRODUCT WHERE PRODUCT_ID = " + productId).list().get(0);
+	}
+	
 }

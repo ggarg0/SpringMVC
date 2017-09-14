@@ -27,10 +27,14 @@ public class Product {
 	int categoryId;
 	
 	@Column(name = "AVAILABLE_QUANTITY")
-	int avaliableQuantity;
+	int availableQuantity;
 	
 	@Column(name = "SOLD_QUANTITY")
 	int soldQuantity;
+	
+	@Column(name = "PRODUCT_PIC_NAME")
+	String productPicName;
+
 
 	public int getProductId() {
 		return productId;
@@ -72,12 +76,12 @@ public class Product {
 		this.categoryId = categoryId;
 	}
 
-	public int getAvaliableQuantity() {
-		return avaliableQuantity;
+	public int getAvailableQuantity() {
+		return availableQuantity;
 	}
 
-	public void setAvaliableQuantity(int avaliableQuantity) {
-		this.avaliableQuantity = avaliableQuantity;
+	public void setAvailableQuantity(int availableQuantity) {
+		this.availableQuantity = availableQuantity;
 	}
 
 	public int getSoldQuantity() {
@@ -86,6 +90,14 @@ public class Product {
 
 	public void setSoldQuantity(int soldQuantity) {
 		this.soldQuantity = soldQuantity;
+	}
+	
+	public String getProductPicName() {
+		return productPicName;
+	}
+
+	public void setProductPicName(String productPicName) {
+		this.productPicName = productPicName;
 	}
 
 }

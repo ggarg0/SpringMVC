@@ -6,11 +6,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shopmart.entity.Customer;
 import com.shopmart.entity.Product;
 import com.shopmart.service.CategoryService;
 import com.shopmart.service.ProductService;
@@ -52,6 +56,25 @@ public class ProductController {
 	
 		return new ModelAndView("viewProductList", "model", model);
 		
+	}
+	
+/*	@RequestMapping(value = "/getProductDetailsByProductId/{productId}", method = RequestMethod.GET)
+	public ModelAndView getProductDetailsByProductId(@PathVariable int productId) {
+		
+		Map<String, Object> model = new HashMap<>();
+		model.put("productList", productService.getProductDetailsByProductId(productId));
+	
+		return new ModelAndView("viewProductDetails", "model", model);
+		
+	}*/
+	
+	@RequestMapping(value = "/getProductDetailsByProductId/{productId}")
+	
+	public String getProductDetailsByProductId(@PathVariable("productId") Integer productId,
+			@ModelAttribute(value = "product") Product product,
+			BindingResult result, ModelMap model) {
+		model.addAttribute("productdetails", productService.getProductDetailsByProductId(productId));
+		return "viewProductDetails";
 	}
 	
 }

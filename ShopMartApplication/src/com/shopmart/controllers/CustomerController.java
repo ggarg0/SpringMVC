@@ -19,13 +19,11 @@ import com.shopmart.service.CustomerService;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerService customerService;
-	
+	private CustomerService customerService;	
 	
 	public void setCustomerService(CustomerService customerService) {
 		this.customerService = customerService;
-	}	
-	
+	}		
 	
 	@RequestMapping("/getAllCustomers")
 	public List<Customer> getAllCustomers(){
@@ -37,15 +35,14 @@ public class CustomerController {
 		return customerService.getCustomerById(customerId);
 	}
 	
-	@RequestMapping(value = "/newcustomer", method = RequestMethod.GET)
+	@RequestMapping(value = "/newCustomerRegistration", method = RequestMethod.GET)
 	public String newCustomer(ModelMap model) {
 		model.addAttribute("customer", new Customer());
-		return "newcustomer";
+		return "newCustomerRegistration";
 	}	
 
 	@RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
-	public String addCustomer(
-			@ModelAttribute(value = "customer") Customer customer,
+	public String addCustomer(@ModelAttribute(value = "customer") Customer customer,
 			BindingResult result) {
 		customerService.addCustomer(customer);
 		customerService.addCustomerRole(customer);

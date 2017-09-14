@@ -36,15 +36,15 @@
 							<th>Product Price</th>
 							<th>Product Description</th>
 							<th>Available Quantity</th>
-							<th>Order</th>
+							
 						</tr>
 						<c:forEach items="${model.productList}" var="product">
 							<tr>
-								<td>${product.productName}</td>
+								<td><a href="/ShopMartApplication/getProductDetailsByProductId/${product.productId}"> ${product.productName}</a></td>
 								<td>${product.productPrice}</td>
 								<td>${product.productDescription}</td>
-								<td>${product.avaliableQuantity}</td>
-								<td><button type="button" class="btn btn-success">Order</button></td>
+								<td>${product.availableQuantity}</td>
+								
 							</tr>
 						</c:forEach>
 					</table>

@@ -51,8 +51,9 @@
 								favorites</li>
 						</ul>
 						<p>
-							<a href="/ShopMartApplication/newcustomer" class="btn btn-info btn-block">Register
-								now!</a>
+						<button type="button" class="btn btn-info btn-block" 
+						onclick="location.href='/ShopMartApplication/newCustomerRegistration'">
+						Register now!</button>
 						</p>
 					</div>
 				</div>
