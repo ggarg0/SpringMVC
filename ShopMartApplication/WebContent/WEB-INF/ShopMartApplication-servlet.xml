@@ -70,23 +70,36 @@
 	<bean id="invoice" class="com.shopmart.entity.Invoice"></bean>
 	<bean id="orders" class="com.shopmart.entity.Orders"></bean>
 	<bean id="orderstatus" class="com.shopmart.entity.OrderStatus"></bean>
+	<bean id="orderdetails" class="com.shopmart.entity.OrderDetails"></bean>
 	<bean id="product" class="com.shopmart.entity.Product"></bean>
 	<bean id="customerrole" class="com.shopmart.entity.CustomerRole"></bean>
+	<bean id="checkout" class="com.shopmart.entity.Checkout"></bean>
+	<bean id="payment" class="com.shopmart.entity.Payment"></bean>
 	
 	
 	<bean id="categoryService" class="com.shopmart.service.CategoryService"></bean>
 	<bean id="customerService" class="com.shopmart.service.CustomerService"></bean>
 	<bean id="invoiceService" class="com.shopmart.service.InvoiceService"></bean>
 	<bean id="ordersService" class="com.shopmart.service.OrdersService"></bean>
+	<bean id="orderDetailsService" class="com.shopmart.service.OrderDetailsService"></bean>
 	<bean id="orderStatusService" class="com.shopmart.service.OrderStatusService"></bean>
 	<bean id="productService" class="com.shopmart.service.ProductService"></bean>
+	<bean id="reportService" class="com.shopmart.service.ReportService"></bean>
+	<bean id="checkoutService" class="com.shopmart.service.CheckoutService"></bean>
+	<bean id="paymentService" class="com.shopmart.service.PaymentService"></bean>
+		
 
 	<bean id="categorydao" class="com.shopmart.dao.CategoryDAO"></bean>
 	<bean id="customerdao" class="com.shopmart.dao.CustomerDAO"></bean>
 	<bean id="invoicedao" class="com.shopmart.dao.InvoiceDAO"></bean>
 	<bean id="ordersdao" class="com.shopmart.dao.OrdersDAO"></bean>
+	<bean id="orderDetailsdao" class="com.shopmart.dao.OrderDetailsDAO"></bean>
 	<bean id="orderStatusdao" class="com.shopmart.dao.OrderStatusDAO"></bean>
 	<bean id="productdao" class="com.shopmart.dao.ProductDAO"></bean>
+	<bean id="reportDAO" class="com.shopmart.dao.ReportDAO"></bean>
+	<bean id="checkoutDAO" class="com.shopmart.dao.CheckoutDAO"></bean>
+	<bean id="paymentDAO" class="com.shopmart.dao.PaymentDAO"></bean>
+	
 	<tx:annotation-driven />
 	
 	<bean id="transactionManager"

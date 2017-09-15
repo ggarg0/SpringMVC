@@ -5,10 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shopmart.dao.CustomerDAO;
 import com.shopmart.entity.Customer;
 import com.shopmart.entity.CustomerRole;
+import com.shopmart.entity.EmployeeEntity;
 
 
 @Service
@@ -24,15 +30,26 @@ public class CustomerService {
 		return customerdao.getAllCustomers();
 	}
 	
-	public List<Customer> getCustomerById(int customerId){
-		return customerdao.getCustomerById(customerId);
-	}
-	
+	@Transactional
+	public Customer getCustomerByCustomerId(int customerId){
+		return customerdao.getCustomerByCustomerId(customerId);
+	}	
 
 	@Transactional
-	public void addCustomer(Customer customer) {
-		customerdao.addCustomer(customer);
+	public void addCustomerDetails(Customer customer) {
+		customerdao.addCustomerDetails(customer);
 	}
+	
+	@Transactional
+	public void updateCustomerdetails(Customer customer) {
+		customerdao.updateCustomerdetails(customer);
+	}
+	
+	@Transactional
+	public void deleteCustomer(Integer customerId) {
+		customerdao.deleteCustomer(customerId);
+	}
+	
 	
 	@Transactional
 	public void addCustomerRole(Customer customer) {

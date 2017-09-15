@@ -28,7 +28,13 @@
 				</span>
 			</div>
 		</div>
-
+		
+ 		<div class="col">
+			<div class="top50">
+				<a class="navbar-brand" href="/../ShopMartApplication/reports">Reports</a>
+			</div>
+		</div>
+		
 		<div class="col">
 			<div class="top50">
 				<a class="navbar-brand" href="/../ShopMartApplication/logout">Logout</a>

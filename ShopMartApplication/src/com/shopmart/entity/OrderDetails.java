@@ -9,16 +9,15 @@ import javax.persistence.Table;
 @Table(name = "ORDER_DETAILS")
 public class OrderDetails {
 
-@Id
+	@Id
 	@Column(name = "ORDER_ID")
 	int ordersId;
-	
+
 	@Column(name = "PRODUCT_ID")
 	int productId;
-	
+
 	@Column(name = "QUANTITY")
 	int quantity;
-
 
 	public int getOrdersId() {
 		return ordersId;

@@ -14,5 +14,7 @@
 		<mapping class="com.shopmart.entity.Customer" />
 		<mapping class="com.shopmart.entity.Category" />
 		<mapping class="com.shopmart.entity.CustomerRole" />
+		<mapping class="com.shopmart.entity.Checkout" />
+		<mapping class="com.shopmart.entity.Payment" />		
     </session-factory>
 </hibernate-configuration>

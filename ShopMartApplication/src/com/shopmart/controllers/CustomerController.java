@@ -1,7 +1,5 @@
 package com.shopmart.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shopmart.entity.Customer;
+import com.shopmart.entity.EmployeeEntity;
 import com.shopmart.service.CustomerService;
 
 
@@ -25,28 +24,37 @@ public class CustomerController {
 		this.customerService = customerService;
 	}		
 	
-	@RequestMapping("/getAllCustomers")
-	public List<Customer> getAllCustomers(){
-		return customerService.getAllCustomers();
-	}
-		
-	@RequestMapping("/getCustomerById/{customerId}")
-	public List<Customer> getCustomerById(@PathVariable int customerId){
-		return customerService.getCustomerById(customerId);
-	}
-	
 	@RequestMapping(value = "/newCustomerRegistration", method = RequestMethod.GET)
 	public String newCustomer(ModelMap model) {
 		model.addAttribute("customer", new Customer());
 		return "newCustomerRegistration";
 	}	
 
-	@RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
-	public String addCustomer(@ModelAttribute(value = "customer") Customer customer,
+	@RequestMapping(value = "/addCustomerDetails", method = RequestMethod.POST)
+	public String addCustomerDetails(@ModelAttribute(value = "customer") Customer customer,
 			BindingResult result) {
-		customerService.addCustomer(customer);
+		customerService.addCustomerDetails(customer);
 		customerService.addCustomerRole(customer);
 		return "redirect:/login";
+	}
+	
+	@RequestMapping("/editCustomerDetails/{customerId}")
+	public String editCustomerDetails(@PathVariable("customerId") Integer customerId, ModelMap model) {
+		model.addAttribute("customer", customerService.getCustomerByCustomerId(customerId));
+		return "editCustomerDetails";
+	}
+		
+	@RequestMapping(value = "/updateCustomerDetails", method = RequestMethod.POST)
+	public String updateCustomerDetails(@ModelAttribute(value = "customer") Customer customer,
+			BindingResult result) {
+		customerService.updateCustomerdetails(customer);
+		return "redirect:/reports";
+	}
+	
+	@RequestMapping("/deleteCustomer/{customerId}")
+	public String deleteCustomer(@PathVariable("customerId") Integer customerId) {
+		customerService.deleteCustomer(customerId);
+		return "redirect:/reports";
 	}
 	
 }

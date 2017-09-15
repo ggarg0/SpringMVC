@@ -48,28 +48,14 @@ public class ProductController {
 
 	
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
-	public ModelAndView getAllProducts() {
-		
+	public ModelAndView getAllProducts() {		
 		Map<String, Object> model = new HashMap<>();
 		model.put("categoryList", categoryService.getAllCategory());
-		model.put("productList", productService.getAllProducts());
-	
-		return new ModelAndView("viewProductList", "model", model);
-		
+		model.put("productList", productService.getAllProducts());	
+		return new ModelAndView("viewProductList", "model", model);		
 	}
 	
-/*	@RequestMapping(value = "/getProductDetailsByProductId/{productId}", method = RequestMethod.GET)
-	public ModelAndView getProductDetailsByProductId(@PathVariable int productId) {
-		
-		Map<String, Object> model = new HashMap<>();
-		model.put("productList", productService.getProductDetailsByProductId(productId));
-	
-		return new ModelAndView("viewProductDetails", "model", model);
-		
-	}*/
-	
 	@RequestMapping(value = "/getProductDetailsByProductId/{productId}")
-	
 	public String getProductDetailsByProductId(@PathVariable("productId") Integer productId,
 			@ModelAttribute(value = "product") Product product,
 			BindingResult result, ModelMap model) {
