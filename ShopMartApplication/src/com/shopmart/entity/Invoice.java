@@ -2,15 +2,21 @@ package com.shopmart.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity(name = "INVOICE")
 @Table(name = "INVOICE")
 public class Invoice {
 
-	@Id
-	@Column(name = "INVOICE_ID")
+	
+	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "invoiceId_generator")
+	@SequenceGenerator(name="invoiceId_generator", sequenceName = "SHOPMART_INVOICE_SEQ", allocationSize=1)
+	@Column(name = "INVOICE_ID", updatable = false, nullable = false)
 	int invoiceId;
 
 	@Column(name = "TOTAL_PRODUCT_PRICE")

@@ -2,15 +2,21 @@ package com.shopmart.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity (name = "CATEGORY")
 @Table(name="CATEGORY")
 public class Category {
 
-	@Id
-	@Column(name="CATEGORY_ID")
+	
+	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoryId_generator")
+	@SequenceGenerator(name="categoryId_generator", sequenceName = "SHOPMART_CATEGORY_SEQ", allocationSize=1)
+	@Column(name = "CATEGORY_ID", updatable = false, nullable = false)
 	int categoryId;
 	 
 	@Column(name="CATEGORY_NAME")

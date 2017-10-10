@@ -2,7 +2,10 @@ package com.shopmart.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -10,8 +13,10 @@ import javax.persistence.Table;
 @Table(name = "PRODUCT")
 public class Product {
 
-	@Id
-	@Column(name = "PRODUCT_ID")
+	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "productId_generator")
+	@SequenceGenerator(name="productId_generator", sequenceName = "SHOPMART_PRODUCT_SEQ", allocationSize=1)
+	@Column(name = "PRODUCT_ID", updatable = false, nullable = false)
 	int productId;
 	
 	@Column(name = "PRODUCT_NAME")

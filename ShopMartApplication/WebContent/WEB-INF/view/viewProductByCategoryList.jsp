@@ -13,6 +13,7 @@
 </head>
 <jsp:include page="productByCategoryHeader.jsp" />
 <body>
+
 	<div class="top20">
 	<div class="container">
 			<div class="row">

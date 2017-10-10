@@ -23,12 +23,6 @@
 			<h3 class="text-success text-center">New Customer Details</h3>
 			<table class="table table-striped top50">
 				<tr>
-					<td><form:label path="customerId">
-							<spring:message code="label.customerId" />
-						</form:label></td>
-					<td><form:input path="customerId" /></td>
-				</tr>
-				<tr>
 					<td><form:label path="firstName">
 							<spring:message code="label.firstName" />
 						</form:label></td>

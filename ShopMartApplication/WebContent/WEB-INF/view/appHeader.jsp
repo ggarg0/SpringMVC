@@ -5,17 +5,22 @@
 
 <spring:url value="/resources/css/core.css" var="coreCss" />
 <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss" />
+<spring:url value="/resources/js/appHeader.js" var="appHeader" />
+
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
+<script src="${appHeader}"></script>
 </head>
 
+<!-- <body onload="codeAddress();"> -->
+<body>
 <spring:url value="/" var="urlHome" />
 <spring:url value="/logout" var="logout" />
 
 <nav class="navbar navbar-light" style="background-color: #5bc0de;">
 	<div class="row">
 	
-	<div class="col-4">
+	<div class="col-3">
 			<a class="navbar-brand" href="/../ShopMartApplication/getAllProducts"> <img
 				src="/../ShopMartApplication/resources/images/icon.jpg"
 				width="120" height="90" alt="">
@@ -37,12 +42,18 @@
 		
 		<div class="col">
 			<div class="top50">
-				<a class="navbar-brand" href="/../ShopMartApplication/logout">Logout</a>
+					<a class="navbar-brand" href="/../ShopMartApplication/reports">Checkout <span class="badge">42</span></a>
+			</div>
+		</div>
+		
+		<div class="col">
+			<div class="top50">
+				<a class="navbar-brand" href="/../ShopMartApplication/logout">Logout  </a>
 			</div>
 		</div>
 	</div>
 </nav>
-
+</body>
 
 
 

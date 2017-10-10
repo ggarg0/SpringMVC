@@ -47,17 +47,14 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation">
-			<value>classpath:hibernate.cfg.xml</value>
-		</property>
-		<property name="configurationClass">
-			<value>org.hibernate.cfg.AnnotationConfiguration</value>
-		</property>
+		<property name="configLocation"><value>classpath:hibernate.cfg.xml</value></property>
+		<property name="configurationClass"><value>org.hibernate.cfg.AnnotationConfiguration</value></property>
 		<property name="hibernateProperties">
 			<value>
 				hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
 				hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
 				hibernate.show_sql=true
+				hibernate.hbm2ddl.auto=update
 			</value>
 		</property>
 	</bean>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.shopmart.dao.ProductDAO;
+import com.shopmart.entity.Customer;
 import com.shopmart.entity.Product;
 
 
@@ -36,5 +37,8 @@ public class ProductService {
 		return productdao.getProductDetailsByProductId(productId);
 	}
 	
-
+	@Transactional
+	public void updateProductDetails(Product product) {
+		productdao.updateProductDetails(product);
+	}
 }

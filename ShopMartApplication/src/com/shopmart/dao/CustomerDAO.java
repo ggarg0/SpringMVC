@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.shopmart.entity.Customer;
 import com.shopmart.entity.CustomerRole;
 import com.shopmart.entity.EmployeeEntity;
+import com.shopmart.entity.Product;
 
 @Repository
 public class CustomerDAO {
@@ -27,6 +28,14 @@ public class CustomerDAO {
 		Customer customer = (Customer) this.sessionFactory.getCurrentSession().get(
 				Customer.class, customerId);
 		return customer;
+	}
+		
+
+	public Customer getCustomerByUsername(String username) {
+		List CustomerRole =  this.sessionFactory.getCurrentSession().createQuery(" FROM CUSTOMER_ROLE WHERE USERNAME = '" 
+				+ username + "'").list();
+		CustomerRole cust = (com.shopmart.entity.CustomerRole) CustomerRole.get(0);
+		return getCustomerByCustomerId(cust.getCustomerId());
 	}
 	
 	public void addCustomerDetails(Customer customer) {

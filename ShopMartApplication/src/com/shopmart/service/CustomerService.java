@@ -5,16 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shopmart.dao.CustomerDAO;
 import com.shopmart.entity.Customer;
 import com.shopmart.entity.CustomerRole;
-import com.shopmart.entity.EmployeeEntity;
 
 
 @Service
@@ -33,6 +27,11 @@ public class CustomerService {
 	@Transactional
 	public Customer getCustomerByCustomerId(int customerId){
 		return customerdao.getCustomerByCustomerId(customerId);
+	}	
+	
+	@Transactional
+	public Customer getCustomerByUsername(String username){
+		return customerdao.getCustomerByUsername(username);
 	}	
 
 	@Transactional
@@ -54,7 +53,7 @@ public class CustomerService {
 	@Transactional
 	public void addCustomerRole(Customer customer) {
 		customerrole.setCustomerId(customer.getCustomerId());
-		customerrole.setUsername(customer.getFirstName());
+		customerrole.setUsername(customer.getFirstName().toLowerCase());
 		customerrole.setPassword("pass");
 		customerrole.setRole("user");
 		customerrole.setEnabled(1);		

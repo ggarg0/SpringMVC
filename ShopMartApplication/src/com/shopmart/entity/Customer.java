@@ -2,34 +2,41 @@ package com.shopmart.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.springframework.context.annotation.Scope;
 
 @Entity(name = "CUSTOMER")
 @Table(name = "CUSTOMER")
 public class Customer {
 
-	@Id
-	@Column(name = "CUSTOMER_ID")
-	int customerId;
+	@Id	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_generator")
+	@SequenceGenerator(name="customer_generator", sequenceName = "SHOPMART_CUSTOMER_SEQ", allocationSize=1)
+	@Column(name = "CUSTOMER_ID", updatable = false, nullable = false)
+	private int customerId;
 
 	@Column(name = "FIRST_NAME")
 	String firstName;
 
 	@Column(name = "LAST_NAME")
-	String lastName;
+	private String lastName;
 
 	@Column(name = "EMAIL_ID")
-	String emailId;
+	private String emailId;
 
 	@Column(name = "PHONE_NUMBER")
-	String phoneNumber;
+	private String phoneNumber;
 
 	@Column(name = "ADDRESS")
-	String address;
+	private String address;
 
 	@Column(name = "CITY")
-	String city;
+	private String city;
 
 	public int getCustomerId() {
 		return customerId;

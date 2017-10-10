@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shopmart.entity.Customer;
 import com.shopmart.entity.Product;
 
 @Repository
@@ -36,6 +37,10 @@ public class ProductDAO {
 	public Product getProductDetailsByProductId(int productId) {
 		return (Product) this.sessionFactory.getCurrentSession().createQuery
 				(" FROM PRODUCT WHERE PRODUCT_ID = " + productId).list().get(0);
+	}
+	
+	public void updateProductDetails(Product product) {
+		this.sessionFactory.getCurrentSession().update(product);
 	}
 	
 }

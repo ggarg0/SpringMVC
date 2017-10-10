@@ -16,44 +16,43 @@
 
 <body>
 	<jsp:include page="appHeader.jsp" />
-
 	<div class="container top50">
-		<form:form method="post" action="/ShopMartApplication/addProductToCart" commandName="product">
-
-			<div class="col left250">
+		<div class="col left250">
 				<img src="/../ShopMartApplication/resources/images/${productdetails.productPicName}.jpg"
 					alt="An image to show the text doesn't wrap">
 			</div>
 			<table class="table table-striped top50">
 				<tr>
-					<td><form:label path="productName">
+					<td><label path="productName">
 							<spring:message code="label.productName" />
-						</form:label></td>
+						</label></td>
 					<td>${productdetails.productName}</td>
 				</tr>
 				<tr>
-					<td><form:label path="productDescription">
+					<td><label path="productDescription">
 							<spring:message code="label.productDescription" />
-						</form:label></td>
+						</label></td>
 					<td>${productdetails.productDescription}</td>
 				</tr>
 				<tr>
-					<td><form:label path="productPrice">
+					<td><label path="productPrice">
 							<spring:message code="label.productPrice" />
-						</form:label></td>
+						</label></td>
 					<td>${productdetails.productPrice}</td>
 				</tr>
 				<tr>
-					<td><form:label path="availableQuantity">
+					<td><label path="availableQuantity">
 							<spring:message code="label.availableQuantity" />
-						</form:label></td>
+						</label></td>
 					<td>${productdetails.availableQuantity}</td>
 				</tr>
 
 			</table>
-			<div class="top50 row">
+			<div class="top50 row">				
 				<div class="col left500">
-					<button type=submit class="btn btn-success">Add to cart</button>
+				<button type="button" class="btn btn-success"
+						onclick="location.href='/../ShopMartApplication/addProductToCart/${productdetails.productId}'">
+						Add to cart</button>
 				</div>
 				<div class="col-2">
 					<button type=button class="btn btn-success"
@@ -61,7 +60,6 @@
 						All Products</button>
 				</div>
 			</div>
-		</form:form>
 	</div>
 
 	<jsp:include page="footer.jsp" />

@@ -26,8 +26,6 @@
 					</c:forEach>
 				</c:if>
 			</div></div>
-
-			
 			<div class="top20">
 				<c:if test="${!empty model.productList}">
 					<table class="table-responsive table table-striped">
