@@ -11,24 +11,31 @@ public class DrawingApp {
 
 	public static void main(String[] args) {
 		
-	//	BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
+		//BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 	
-	//	Triangle obj = (Triangle) factory.getBean("triangle");
-		Shape obj = (Shape) context.getBean("triangle-alias");
-		Shape objConstructor = (Shape) context.getBean("triangle-constructor");
-		TrianglePoints objPoints = 
+		System.out.println("From  TriangleObj: ");
+		Triangle TriangleObj = (Triangle) context.getBean("triangle");
+		TriangleObj.draw();
+		
+		System.out.println("From  shapeObj: ");
+		Shape shapeObj = (Shape) context.getBean("triangle-alias");
+		shapeObj.draw();
+		
+		System.out.println("From  shapeObjConstructor: ");
+		Shape shapeObjConstructor = (Shape) context.getBean("triangle-constructor");
+		shapeObjConstructor.draw();
+		
+		System.out.println("From  trianglePointsObject: ");
+		TrianglePoints trianglePointsObject = 
 				(TrianglePoints) context.getBean("trianglePoints");
-		TriangleCollections objCollections = 
-				(TriangleCollections) context.getBean("triangleCollections");
+		trianglePointsObject.drawPoints();
 		
-		
-		
-		obj.draw();
-		 ((AbstractApplicationContext) context).registerShutdownHook();
-		objConstructor.draw();
-	//	objPoints.drawPoints();
-	//	objCollections.drawPointsFromList();
+		System.out.println("From  triangleCollectionsObj: ");
+		TriangleCollections triangleCollectionsObj = 
+				(TriangleCollections) context.getBean("triangleCollections");	
+		triangleCollectionsObj.drawPointsFromList();
+				
+		 ((AbstractApplicationContext) context).registerShutdownHook();	
 	}
-
 }
