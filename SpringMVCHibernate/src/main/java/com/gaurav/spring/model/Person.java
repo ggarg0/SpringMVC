@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,8 +13,14 @@ import javax.persistence.Table;
 public class Person {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "personId_generator")
+	@SequenceGenerator(name = "personId_generator", sequenceName = "PERSON_SEQ", allocationSize = 1)
 	@Column(name="id")
 	private int id;
+	/*
+	 * CREATE SEQUENCE PERSON_SEQ START WITH 10001 INCREMENT BY 1 MINVALUE 10001
+	 * NOCACHE NOCYCLE ORDER ;
+	 */
 	
 	private String name;
 	
