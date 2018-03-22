@@ -27,6 +27,12 @@ public class StudentController {
       return "result";
    }
    
+   @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
+   public String addStudent() {
+      
+      return "result";
+   }
+   
    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
    public String redirect() {
      
