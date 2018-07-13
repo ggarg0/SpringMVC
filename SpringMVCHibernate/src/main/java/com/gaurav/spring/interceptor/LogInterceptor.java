@@ -22,9 +22,13 @@ public class LogInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2) throws Exception {
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object obj) throws Exception {
 		System.out.println(" preHandle ");
-		return true;
+		if (req.getMethod().equals("POST"))
+			return true;
+		else
+			return false;
+
 	}
 
 }

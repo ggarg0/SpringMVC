@@ -1,5 +1,7 @@
 package com.gaurav.spring;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,11 @@ public class PersonController {
 		this.personService = ps;
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model) {
+		return "redirect:/persons";
+	}
+
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
 	public String listPersons(Model model) {
 		model.addAttribute("person", new Person());
@@ -32,8 +39,8 @@ public class PersonController {
 	
 	//For add and update person both
 	@RequestMapping(value= "/person/add", method = RequestMethod.POST)
-	public String addPerson(@ModelAttribute("person") Person p){
-		
+	public String addPerson(@ModelAttribute("person") Person p, HttpServletRequest request) {
+		System.out.println("From addPerson : " + request.getMethod());
 		if(p.getId() == 0){
 			//new person, add it
 			this.personService.addPerson(p);
@@ -46,18 +53,19 @@ public class PersonController {
 		
 	}
 	
-	@RequestMapping("/remove/{id}")
-    public String removePerson(@PathVariable("id") int id){
-		
+	@RequestMapping(value = "/remove/{id}")
+	public String removePerson(@PathVariable("id") int id, HttpServletRequest request) {
+		System.out.println("From removePerson : " + request.getMethod());
         this.personService.removePerson(id);
         return "redirect:/persons";
     }
  
     @RequestMapping("/edit/{id}")
-    public String editPerson(@PathVariable("id") int id, Model model){
+    public String editPerson(@PathVariable("id") int id, Model model, HttpServletRequest request){
+		System.out.println("From editPerson : " + request.getMethod());
         model.addAttribute("person", this.personService.getPersonById(id));
         model.addAttribute("listPersons", this.personService.listPersons());
-        return "person";
+		return "person";
     }
 	
 }
